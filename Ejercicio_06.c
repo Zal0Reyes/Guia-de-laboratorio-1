@@ -1,7 +1,11 @@
-/*Ejercicio 6: Implementación Completa de Funciones
+/*
+Ejercicio 6: Implementación Completa de Funciones
+
 Contexto: Demostración integral de dominio de funciones en C.
+
 Problema: Implemente TODOS los ejercicios propuestos de la Guı́a de Trabajo N°3 (Ejercicios 11 al 25), que
 incluyen:
+
 1. Ejercicio 11: Función para calcular promedio de tres números decimales
 2. Ejercicio 12: Función para determinar años bisiestos y validar fechas
 3. Ejercicio 13: Función para convertir números decimales a binario
@@ -16,4 +20,5 @@ incluyen:
 12. Ejercicio 22: Función para generar números aleatorios y juego de adivinanzas
 13. Ejercicio 23: Sistema de estadı́sticas con funciones separadas
 14. Ejercicio 24: Función para generar patrones de asteriscos
-15. Ejercicio 25: Sistema completo de gestión de calificaciones*/
+15. Ejercicio 25: Sistema completo de gestión de calificaciones
+*/
