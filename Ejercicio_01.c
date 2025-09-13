@@ -1,40 +1,80 @@
-/*
-Ejercicio 1: Sistema de Calificación Académica Avanzado
 
-Contexto: Una universidad necesita un sistema que procese las calificaciones de estudiantes y determine su
-situación académica según reglas complejas de la institución.
+/* 
+NO terminado Aun
+NO terminado Aun
+NO terminado Aun
+NO terminado Aun
+NO terminado Aun
+NO terminado Aun
 
-Problema: Desarrolle un programa que simule el sistema de calificación de una universidad con las siguientes
-caracterı́sticas:
-
-1. El estudiante puede cursar entre 3 y 8 materias por semestre
-
-2. Cada materia tiene un número de créditos (entre 2 y 6 creditos)
-
-3. Las calificaciones van de 1.0 a 7.0 (escala chilena)
-
-4. El promedio ponderado se calcula considerando los créditos de cada materia
-
-5. La situación académica se determina según:
-Promedio ≥ 5.5: Situación Regular
-Promedio entre 4.0 y 5.4: Situación de Alerta (máximo 2 materias reprobadas)
-Promedio < 4.0 o más de 2 materias reprobadas: Situación Crı́tica
-
-6. Si está en situación crı́tica por 2 semestres consecutivos: Eliminación Académica
-1Ingenierı́a Civil en Computación
-Programación - ICC
-
-Requerimientos técnicos:
-Función para calcular promedio ponderado
-Función para determinar situación académica
-Función para validar datos de entrada
-Función recursiva para calcular el promedio histórico de múltiples semestres
-Menú interactivo con validación completa
-Simulación de múltiples semestres para un estudiante
-
-Casos de prueba esperados:
-Estudiante con situación regular
-Estudiante en alerta académica
-Estudiante en situación crı́tica
-Simulación de eliminación académica
+Solo me dedique a realizar algunas funciones por si las quieres revisar. El main esta vacio de momento, hay si quieres hacer algun cambio dale nomas 
 */
+
+#include <stdio.h>
+
+float promedio_ponderado(int numero_materias, float notas[], int creditos[]);
+char situacion_academica(float promedio, int materias_reprobadas);
+int cantidad_materias_reprobadas(int numero_materias, float notas[]);
+int menu();
+
+int main(){
+    int opcion = menu(); //Muestro el menu en la terminal y pido un dato.
+}
+
+int menu(){
+    int opcion;
+    //muestro las opciones a escoger
+    printf("=====SISTEMA DE CALIFICAIONES=====\n");
+    printf("1) Ingresar Calificaciones De Semestre\n");
+    printf("2) Historial\n");
+    printf("3) salir\n");
+    do{
+        printf("Ingrese opcion(1-3): ");//pido un dato.
+        scanf("%d",&opcion);
+    }while (opcion < 1 || opcion > 3);//si el dato esta fuera del rango lo volvera a pedir.
+    return opcion;//Retorno la opcion escogida.
+}
+
+float promedio_ponderado(int numero_materias, float notas[], int creditos[]){
+    
+    float suma = 0; //Iniciamos la suma en 0.
+    int total_creditos = 0;//Inciamos el total de cretidos en 0.
+    
+    for (int i = 0; i < numero_materias ; i++){ //Recorreremos los 2 arreglos para ir multiplicando nota por nota con su credito devido.
+        suma += creditos[i] * notas[i];
+        total_creditos += creditos[i]; //Sumamos los creditos para despues dividirlos por la suma total.
+    }
+    if (total_creditos == 0){ //si la cantidad de creditos es 0, retornaremos un FALSE por que no podemos dividir el total por 0 (Daria un error).
+        return 0;
+    }
+    
+    else{
+        return suma/total_creditos; //Retornamos la suma total divida en el total de creditos.
+    }
+}
+
+int cantidad_materias_reprobadas(int numero_materias, float notas[]){
+    
+    int contador_materias_reprobadas = 0;//iniciamos un contador en 0.
+    
+    for (int i = 0; i < numero_materias; i++){ //recorreremos el arreglo para ir viendo si alguna nota es menor a 4.
+        if (notas[i] < 4){
+            contador_materias_reprobadas++; //si una nota es menor a 4, se cuenta y luego se retornara el total.
+        }
+    }
+    return contador_materias_reprobadas; 
+}
+
+char situacion_academica(float promedio, int materias_reprobadas){
+    
+    //Clasificacion de notas.
+    if (promedio >= 5.5){
+        return 'R'; //Situacion REGULAR.
+    }
+    else if (promedio >= 4 && promedio <= 5.4 && materias_reprobadas <=2 ){
+        return 'A'; //Situacion ALERTA.
+    }
+    else{
+        return 'C'; //Situacion CRITICA.
+    }
+}
